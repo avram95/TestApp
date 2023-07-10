@@ -19,12 +19,13 @@ import com.example.testapp.ui.theme.TestAppTheme
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
-
+// todo create viewmodel, usecase, repository
+// todo move async tasks to repository
 class MainActivity : ComponentActivity() {
 
     private var db: AppDatabase? = null
     private val bootReceiver = BootReceiver {
-        //move to repository, run async
+        //todo move to repository, run async
         db!!.bootInfoDao().insertBootInfo(BootInfo(timestamp = System.currentTimeMillis()))
     }
 
@@ -56,7 +57,7 @@ class MainActivity : ComponentActivity() {
 
     private fun bootInfoFormat(): String {
         val strBuilder = StringBuilder()
-        //move to repository, run async
+        //todo move to repository, run async
         val bootList = db!!.bootInfoDao().getBootInfoList()
         bootList?.forEachIndexed { index, bootInfo ->
             strBuilder.append("$index. $bootInfo")
